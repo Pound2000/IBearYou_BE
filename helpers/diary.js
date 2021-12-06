@@ -79,6 +79,7 @@ const ret ={}
         sql += ", wish='"+json.wish+ "'";
 	    sql += ", user_id = '" +json.user_id+"'" ;
 	    sql += " WHERE diary_id ='" +json.diary_id+"'";
+        sql += " and date(create_date) = '" +json.create_date+"'";
 
     console.log(" sql : ",sql)
 
@@ -219,7 +220,7 @@ diary.select_diary = async(json)=>{
     where u.user_id = '1' and d.create_date = '2021-11-16';
     */
     
-    let sql  =  " select d.diary_id,d.create_date, d.title, d.good, d.bad, d.wish, d.feel_id "
+    let sql  =  " select d.diary_id, to_char(d.create_date, 'DD-MM-YYYY') as date, d.title, d.good, d.bad, d.wish, d.feel_id "
         sql +=  " from diary d "
         sql +=  " left join users u "
         sql +=  " on d.user_id = u.user_id" 
