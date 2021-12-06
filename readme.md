@@ -19,7 +19,7 @@ https://github.com/Pound2000/IBearYou_BE.git
 
 docker exec -t ibearyoudb pg_dumpall -c -U ibearyou > dump_ibearyou.sql
 
-cat dump_ibearyou.sql | docker exec -i ibearyoudb psql -U ibearyou
+cat dump_ibearyou.sql | docker exec -i ibearyoudb psql -U ibearyou -d ibearyou_db
 
 
 

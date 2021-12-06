@@ -219,7 +219,7 @@ diary.select_diary = async(json)=>{
     where u.user_id = '1' and d.create_date = '2021-11-16';
     */
     
-    let sql  =  " select d.create_date, d.title, d.good, d.bad, d.wish "
+    let sql  =  " select d.diary_id,d.create_date, d.title, d.good, d.bad, d.wish, d.feel_id "
         sql +=  " from diary d "
         sql +=  " left join users u "
         sql +=  " on d.user_id = u.user_id" 
