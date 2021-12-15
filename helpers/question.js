@@ -8,6 +8,7 @@ question.list_all = async (json) => {
         sql += " FROM question Q, question_type QT WHERE Q.quest_type_id = QT.quest_type_id"*/
 
     let question =
+    
         [{
             "questionId": "40001",
             "detail": "ปัญหาเรื่องเรียนกระทบต่อจิตใจเธอมากแค่ไหน",

@@ -165,8 +165,9 @@ app.get('/api/list-card',async (req,res,next)=>{
 })
 
 app.get('/api/card-result',async (req,res,next)=>{
-   const json = req.body
-   const ret = await card.card_result(json)
+   const json = req.query
+   console.log("json : ",json)
+   const ret = await card.card_result (json)
    console.log(ret)
    res.send(ret)
 })

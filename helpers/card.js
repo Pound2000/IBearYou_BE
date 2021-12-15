@@ -32,8 +32,10 @@ await psql.manyOrNone(sql)
 
 card.card_result = async(json)=>{
 const ret ={}
-let sql = "SELECT card_id, card_name, card_description, cheer_up, image_result FROM card"
-
+let sql =   " select c.card_id, c.card_name, c.card_description, c.cheer_up, c.image_result  from card c "
+    sql +=  " left join result r " 
+    sql +=  " on c.card_id = r.card_id "
+    sql +=  " where r.final_score = '" +json.final_score+"'"
 await psql.manyOrNone(sql)
                 .then((data) => {
                  
