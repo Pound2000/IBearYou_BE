@@ -172,6 +172,7 @@ app.get('/api/card-result',async (req,res,next)=>{
    res.send(ret)
 })
 
+
 // heal_sentence
 app.get('/api/list-heal_sentence',async (req,res,next)=>{
    const json = req.query
