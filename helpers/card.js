@@ -2,6 +2,7 @@ const psql = require('../psqlAdapter').psql;
 
 const card ={}
 
+//get
 card.list_all = async(json)=>{
 const ret ={}
 let sql = "SELECT card_id, card_name, card_description, cheer_up, image_result, min_card_score, max_card_score FROM card"
@@ -30,6 +31,7 @@ await psql.manyOrNone(sql)
 
 }
 
+//get
 card.card_result = async(json)=>{
 const ret ={}
 let sql =   " select c.card_id, c.card_name, c.card_description, c.cheer_up, c.image_result  from card c "
@@ -37,8 +39,7 @@ let sql =   " select c.card_id, c.card_name, c.card_description, c.cheer_up, c.i
     sql +=  " on c.card_id = r.card_id "
     sql +=  " where r.final_score = '" +json.final_score+"'"
 await psql.manyOrNone(sql)
-                .then((data) => {
-                 
+                .then((data) => {                
 
                 console.log(data.length)
                 if(data.length >0){ 

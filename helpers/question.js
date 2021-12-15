@@ -725,7 +725,10 @@ question.list_all = async (json) => {
                     ret.message="Error"
                     throw error  
                     });*/
-    return question
+            ret.status=200
+                    ret.message="Success"
+                    ret.data = question
+    return ret
 
 }
 

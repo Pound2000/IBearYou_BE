@@ -36,11 +36,7 @@ await psql.manyOrNone(sql)
 users.register = async(json)=>{
     console.log(json)
 const ret ={}
-/*INSERT INTO users(  first_name, last_name, user_name, password, email
-      ,birthday, create_date, update_date, pic_id, hs_id)
- VALUES ('neo', 'swap', 'neo1', 'engineer', 'neo2@neoswap.finance', '2000-02-02', current_timestamp, current_timestamp, 
-   1, 1);
- */
+
 let sqlCheck1 = "SELECT * from users WHERE  email = '"+String(json.email).trim() + "' "
 let sqlCheck2 = "Select * from users where user_name = '"+String(json.user_name).trim()+"'"
 const isDupEmail = await checkDupEmail(sqlCheck1)

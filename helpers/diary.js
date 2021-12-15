@@ -79,18 +79,18 @@ const ret ={}
         sql += ", wish='"+json.wish+ "'";
 	    sql += ", user_id = '" +json.user_id+"'" ;
 	    sql += " WHERE diary_id ='" +json.diary_id+"'";
-        sql += " and date(create_date) = '" +json.create_date+"'";
+    
 
     console.log(" sql : ",sql)
 
         const update = await psql.none(sql)
                 .then(() => { 
-                    ret.status="Success" 
+                    ret.message="Success" 
                 })
                 .catch(error => {
                     // error;
                     throw error
-                    ret.status="Error"
+                    ret.message="Error"
                 });
 
         
@@ -220,7 +220,7 @@ diary.select_diary = async(json)=>{
     where u.user_id = '1' and d.create_date = '2021-11-16';
     */
     
-    let sql  =  " select d.diary_id, to_char(d.create_date, 'DD-MM-YYYY') as date, d.title, d.good, d.bad, d.wish, d.feel_id "
+    let sql  =  " select d.diary_id, to_char(d.create_date, 'DD-MM-YYYY') as create_date, d.title, d.good, d.bad, d.wish, d.feel_id "
         sql +=  " from diary d "
         sql +=  " left join users u "
         sql +=  " on d.user_id = u.user_id" 
@@ -236,7 +236,7 @@ diary.select_diary = async(json)=>{
                     if(data.length >0){ 
                     ret.status=200
                     ret.message="Success"
-                    ret.data = data
+                    ret.data = data[0]
     
                     }
     
