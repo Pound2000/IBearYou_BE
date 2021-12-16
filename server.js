@@ -14,6 +14,8 @@ import questionnaire_question  from './helpers/questionnaire_question';
 import heal_sentence  from './helpers/heal_sentence';
 import users  from './helpers/users';
 import sound from './helpers/sound';
+import priority from './helpers/priority';
+import to_do_list from './helpers/to_do_list';
 
 const login = require('./routes/login')
 const register = require('./routes/register')
@@ -172,6 +174,15 @@ app.get('/api/card-result',async (req,res,next)=>{
    res.send(ret)
 })
 
+app.get('/api/card-result-real',async (req,res,next)=>{
+   console.log("req.query : ",req.query) 
+   const json = req.query
+   console.log("json : ",json)
+   const ret = await card.card_result_real(json)
+   console.log(ret)
+   res.send(ret)
+})
+
 
 // heal_sentence
 app.get('/api/list-heal_sentence',async (req,res,next)=>{
@@ -280,10 +291,80 @@ app.get('/api/moody',async (req,res,next)=>{
 
 })
 
+// ---------------- choose priority -----------------
 
+// get all priority
+app.get('/api/list-priority',async (req,res,next)=>{
+   const json = req.query
+   console.log("json : ",json)
+   const ret = await priority.list_all(json)
+   console.log(ret)
+   res.send(ret)
 
+})
 
+//low
+app.get('/api/priority-low',async (req,res,next)=>{
+   const json = req.query
+   console.log("json : ",json)
+   const ret = await priority.low(json)
+   console.log(ret)
+   res.send(ret)
 
+})
+
+app.get('/api/priority-medium',async (req,res,next)=>{
+   const json = req.query
+   console.log("json : ",json)
+   const ret = await priority.medium(json)
+   console.log(ret)
+   res.send(ret)
+
+})
+
+app.get('/api/priority-high',async (req,res,next)=>{
+   const json = req.query
+   console.log("json : ",json)
+   const ret = await priority.high(json)
+   console.log(ret)
+   res.send(ret)
+
+})
+
+// ---------------- to_do_list page -----------------
+// first page
+app.get('/api/list-to_do_list',async (req,res,next)=>{
+   const json = req.query
+   console.log("json : ",json)
+   const ret = await to_do_list.list_all(json)
+   console.log(ret)
+   res.send(ret)
+
+})
+
+//write to_do_list
+app.post('/api/create-to_do_list',async (req,res,next)=>{
+   const json = req.body
+   const ret = await to_do_list.create_to_do_list(json)
+   console.log(ret)
+   res.send(ret)
+})
+
+//update to_do_list
+app.put('/api/edit-to_do_list',async (req,res,next)=>{
+   const json = req.body
+   const ret = await to_do_list.edit_to_do_list(json)
+   console.log(ret)
+   res.send(ret)
+})
+
+//remove to_do_list
+app.delete('/api/delete-to_do_list',async (req,res,next)=>{
+   const json = req.body
+   const ret = await to_do_list.delete_to_do_list(json)
+   console.log(ret)
+   res.send(ret)
+})
 
 const PORT = process.env.PORT || 3000;
 app.listen(PORT, () => console.log(`Server is running on port ${PORT}`));
