@@ -148,7 +148,7 @@ to_do_list.get_one_to_do_list = async (json) => {
 
         })
         .catch(error => {
-            // error;
+            // errorr;
             ret.status = 400
             ret.message = "Error"
             throw error

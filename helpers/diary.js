@@ -110,7 +110,7 @@ diary.list_allgood = async(json)=>{
     
     let sql   =  " select  to_char(d.create_date, 'DD-MM-YYYY') as date, d.good"
         sql  +=  " from diary d " 
-        sql  +=  "left join users u on d.user_id = u.user_id where u.user_id =" +json.user_id; 
+        sql  +=  " left join users u on d.user_id = u.user_id where u.user_id =" +json.user_id; 
         sql  +=  " group by d.good,d.create_date"
         sql  +=  " order by d.create_date desc;" 
     console.log(sql)   
