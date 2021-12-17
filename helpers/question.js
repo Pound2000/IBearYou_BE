@@ -117,18 +117,12 @@ question.list_all = async (json) => {
 
         {
             "questionId": "41008",
-            "detail": "อยากให้เธอทำใจให้สบายก่อน",
-            "nextQuestionId": "41009",
-            "questionType": "3"
-        },
-
-        {
-            "questionId": "41009",
             "detail": "เธออาจต้องการใครสักคน ให้น้องหมีอยู่ข้างๆเธอนะ",
             "nextQuestionId": "",
             "questionType": "3"
         },
 
+       
 
         {
             "questionId": "42001",
@@ -205,16 +199,10 @@ question.list_all = async (json) => {
         {
             "questionId": "42008",
             "detail": "เธอเก่งมากที่สุดแล้ว ความพยายามของเธอจะไม่สูญเปล่า",
-            "nextQuestionId": "42009",
-            "questionType": "3"
-        },
-
-        {
-            "questionId": "42009",
-            "detail": "ในวันที่รู้สึกไม่ไหว หยุดพักได้นะ ไม่ต้องรีบเดิน",
             "nextQuestionId": "",
             "questionType": "3"
         },
+
 
 
         {
@@ -292,414 +280,189 @@ question.list_all = async (json) => {
 
         {
             "questionId": "43008",
-            "detail": "ตอนนี้คุณกำลังหมดกำลังใจในการแก้ปัญหาต่างๆอยู่รึเปล่านะ",
-            "nextQuestionId": "43009",
-            "questionType": "3"
-        },
-
-        {
-            "questionId": "43009",
-            "detail": "แต่น้องหมีพกกำลังใจมาให้คุณเต็มเลย",
+            "detail": "ตอนนี้คุณกำลังหมดกำลังใจในการแก้ปัญหาอยู่รึเปล่า น้องหมีพกกําลังใจมาให้คุณเต็มเลยนะ",
             "nextQuestionId": "",
             "questionType": "3"
         },
 
+      
         {
             "questionId": "44001",
-            "detail": "ตอนนี้เธอกําลังอยู่ในสถานะไหน",
+            "detail": "ตอนนี้มีความสัมพันธ์แบบไหน",
             "choices": [
-                { "seq": "1", "desc": "โสด", "nextQuestionId": "45001", "choice_score": "0" },
-                { "seq": "2", "desc": "มีแฟน", "nextQuestionId": "45009", "choice_score": "0" },
-                { "seq": "3", "desc": "คนคุย", "nextQuestionId": "45017", "choice_score": "0" },
-                { "seq": "4", "desc": "มือที่ 3", "nextQuestionId": "45025", "choice_score": "0" }
+                { "seq": "1", "desc": "toxic", "nextQuestionId": "44002", "choice_score": "41" },
+                { "seq": "2", "desc": "healthy", "nextQuestionId": "44002", "choice_score": "46" }
             ],
             "questionType": "1"
 
         },
 
         {
-            "questionId": "45001",
-            "detail": "สาเหตุอะไรที่ทําให้เธอรู้สึกกังวลใจ",
+            "questionId": "44002",
+            "detail": "เธอพอใจในความสัมพันธ์ตอนนี้หรือไม่",
             "choices": [
-                { "seq": "1", "desc": "กลัวการมีความรัก กลัวการเริ่มต้นใหม่ ไม่กล้าเปิดใจ", "nextQuestionId": "45002", "choice_score": "2" },
-                { "seq": "2", "desc": "เหงา โสดนานเกินไป", "nextQuestionId": "45002", "choice_score": "1" },
-                { "seq": "3", "desc": "คิดถึงแฟนเก่า / move on ไม่", "nextQuestionId": "45002", "choice_score": "3" }
+                { "seq": "1", "desc": "ไม่พอใจ", "nextQuestionId": "44003", "choice_score": "41.5" },
+                { "seq": "2", "desc": "พอใจ", "nextQuestionId": "44003", "choice_score": "46.5" }
+            ],
+            "questionType": "1"
+        },
+
+        {
+            "questionId": "44003",
+            "detail": "เธอได้ลองพูดคุยถึงปัญหาความสัมพันธ์กับอีกฝ่ายหรือยัง",
+            "choices": [
+                { "seq": "1", "desc": "ยังไม่ได้ลองพูดคุย", "nextQuestionId": "44004", "choice_score": "42" },
+                { "seq": "2", "desc": "ได้ลองพูดคุยแล้ว", "nextQuestionId": "44004", "choice_score": "47" }
+            ],
+            "questionType": "1"
+        },
+
+        {
+            "questionId": "44004",
+            "detail": "เมื่อตอนที่เธอมีความรัก เธอเป็นคนที่ดีขึ้นหรือไม่ ",
+            "choices": [
+                { "seq": "1", "desc": "คิดว่าตัวเองแย่ลง", "nextQuestionId": "44005", "choice_score": "42.5" },
+                { "seq": "2", "desc": "คิดว่าตัวเองดีขึ้นนะ", "nextQuestionId": "44005", "choice_score": "47.5" }
+            ],
+            "questionType": "1"
+        },
+
+        {
+            "questionId": "44005",
+            "detail": "ปัญหาที่เจออยู่เกี่ยวข้องกับมือที่ 3 ไหม",
+            "choices": [
+                { "seq": "1", "desc": "เกี่ยวกับมือที่ 3", "nextQuestionId": "44006", "choice_score": "1" },
+                { "seq": "2", "desc": "ไม่เกี่ยวกับมือที่ 3", "nextQuestionId": "44006", "choice_score": "5" }
+            ],
+            "questionType": "1"
+        },
+
+        {
+            "questionId": "44006",
+            "detail": "เธอรู้สึกว่าอีกฝ่ายอยากที่จะสานความพันธ์ครั้งนี้ต่อไปไหม",
+            "choices": [
+                { "seq": "1", "desc": "ไม่อยากสานความสัมพันธ์", "nextQuestionId": "44007", "choice_score": "43" },
+                { "seq": "2", "desc": "อยากสานความสัมพันธ์", "nextQuestionId": "44007", "choice_score": "48" }
+            ],
+            "questionType": "1"
+        },
+
+       
+        {
+            "questionId": "44007",
+            "detail": "เธอคิดว่าอีกฝ่ายเห็นคุณค่าของเธอในความสัมพันธ์ครั้งนี้ไหม",
+            "choices": [
+                { "seq": "1", "desc": "ไม่เห็นคุณค่า", "nextQuestionId": "44008", "choice_score": "43.5" },
+                { "seq": "2", "desc": "เห็นคุณค่า", "nextQuestionId": "44008", "choice_score": "48.5" }
+            ],
+            "questionType": "1"
+        },
+
+        {
+            "questionId": "44008",
+            "detail": "เธออยากเริ่มต้นความสัมพันธ์ที่ดีแต่ยังไม่กล้าเริ่มต้นรึเปล่า",
+            "choices": [
+                { "seq": "1", "desc": "กล้าเริ่มต้นใหม่", "nextQuestionId": "44009", "choice_score": "2" },
+                { "seq": "2", "desc": "ยังไม่กล้าเริ่มต้นใหม่", "nextQuestionId": "44009", "choice_score": "6" }
+            ],
+            "questionType": "1"
+        },
+
+       
+
+        {
+            "questionId": "44009",
+            "detail": "อยากจะบอกกับตัวเองในวันนี้ไหม พิมพ์สิ่งที่เธออยากบอกได้เลย แต่ถ้าไม่มีสามารถกดถัดไปได้เลยนะ",
+            "nextQuestionId": "44010",
+            "questionType": "2"
+        },
+
+        {
+            "questionId": "44010",
+            "detail": "เรามาก้าวข้ามผ่านอุปสรรคนี้ไปด้วยกันกับน้องหมีนะ",
+            "nextQuestionId": "",
+            "questionType": "3"
+        },
+
+     
+        {
+            "questionId": "45001",
+            "detail": "ตอนนี้ปัญหาเรื่องการเงินของเธอกระทบต่อจิตใจเธอแค่ไหน",
+            "choices": [
+                { "seq": "1", "desc": "มากที่สุด", "nextQuestionId": "45002", "choice_score": "5" },
+                { "seq": "2", "desc": "มาก", "nextQuestionId": "45002", "choice_score": "4" },
+                { "seq": "3", "desc": "ปานกลาง", "nextQuestionId": "45002", "choice_score": "3" },
+                { "seq": "4", "desc": "น้อย", "nextQuestionId": "45002", "choice_score": "2" },
+                { "seq": "5", "desc": "น้อยที่สุด", "nextQuestionId": "45002", "choice_score": "1" }
             ],
             "questionType": "1"
         },
 
         {
             "questionId": "45002",
-            "detail": "เธอพอใจกับความรู้สึกในตอนนี้หรือไม่",
+            "detail": "เรามาข้ามผ่านอุปสรรคนี้ไปด้วยกันนะ โดยน้องหมีอยากนำเสนอรูปแบบเหล่านี้มาให้เธอได้ลองเลือก",
             "choices": [
-                { "seq": "1", "desc": "พอใจ", "nextQuestionId": "45003", "choice_score": "41" },
-                { "seq": "2", "desc": "ไม่พอใจ", "nextQuestionId": "45003", "choice_score": "45" }
+                { "seq": "1", "desc": "ลองจัดลำดับความสำคัญของหนี้กัน", "nextQuestionId": "45003", "choice_score": "85" },
+                { "seq": "2", "desc": "มาลองวางแผนการใช้เงินกัน", "nextQuestionId": "45003", "choice_score": "80" }
             ],
             "questionType": "1"
         },
 
         {
             "questionId": "45003",
-            "detail": "สาเหตุอะไรที่ทำให้เธอรู้สึกกลัวการมีความรักครั้งใหม่",
+            "detail": "ถ้าให้เธอลองวางแผนจัดระเบียบหนี้เธอพอจะนึกออกกันไหม",
             "choices": [
-                { "seq": "1", "desc": "ไม่อยากผูกมัดกับใคร", "nextQuestionId": "45004", "choice_score": "41.5" },
-                { "seq": "2", "desc": "ยังเจ็บจากรักเก่า", "nextQuestionId": "45004", "choice_score": "45.5" }
+                { "seq": "1", "desc": "คิดออกๆ", "nextQuestionId": "45004", "choice_score": "80.5" },
+                { "seq": "2", "desc": "ยังไม่เข้าใจเท่าไหร่", "nextQuestionId": "45004", "choice_score": "85.5" }
             ],
             "questionType": "1"
         },
 
         {
             "questionId": "45004",
-            "detail": "เธออยากมีใครสักคนมาเป็นคนพิเศษในชีวิตใช่ไหม",
+            "detail": "เธอมองว่ารูปแบบใดที่เธอสามารถพอที่จะทำให้หนี้ลดลงไปได้",
             "choices": [
-                { "seq": "1", "desc": "ใช่", "nextQuestionId": "45005", "choice_score": "42" },
-                { "seq": "2", "desc": "ไม่ใช่", "nextQuestionId": "45005", "choice_score": "46" }
+                { "seq": "1", "desc": "ยืม/กู้เงินจากคนอื่นมาโปะหนี้", "nextQuestionId": "45005", "choice_score": "82" },
+                { "seq": "2", "desc": "ขายสินทรัพย์ที่ตนเองมีอยู่", "nextQuestionId": "45005", "choice_score": "81.5" },
+                { "seq": "3", "desc": "เพิ่มรายได้ด้วยงานพิเศษ", "nextQuestionId": "45005", "choice_score": "81" }
             ],
             "questionType": "1"
         },
 
         {
             "questionId": "45005",
-            "detail": "ถ้าตอนนี้เธอกําลังตกหลุมรักใครสักคนและ หากวันนึงเขาจากไปเพราะเราไม่ได้ผูกมัดกัน เธอจะยอมรับได้หรือไม่",
+            "detail": "เธอคิดว่าการยืม/กู้เงินเพื่อมาโปะหนี้",
             "choices": [
-                { "seq": "1", "desc": "ยอมรับได้", "nextQuestionId": "45006", "choice_score": "42.5" },
-                { "seq": "2", "desc": "ยอมรับไม่ได้", "nextQuestionId": "45006", "choice_score": "46.5" }
+                { "seq": "1", "desc": "ข้อดีมากกว่า", "nextQuestionId": "45006", "choice_score": "86" },
+                { "seq": "2", "desc": "ข้อเสียมากกว่า", "nextQuestionId": "45006", "choice_score": "82.5" }
             ],
             "questionType": "1"
         },
 
         {
             "questionId": "45006",
-            "detail": "เธอมีอะไรที่อยากจะบอกกับตัวเองในวันนี้ไหม พิมพ์สิ่งที่เธออยากบอกกับตัวเองในกล่องข้อความได้เลย แต่ถ้ายังไม่อยากบอกกดถัดไปได้เลยนะ",
-            "nextQuestionId": "45007",
-            "questionType": "2"
+            "detail": "น้องหมีอยากให้เธอทำใจให้สบาย และลองคิดว่ามีวิธีใดที่จะช่วยทำให้ตัดสินใจขายได้ง่ายขึ้น",
+            "choices": [
+                { "seq": "1", "desc": "เช็คว่ามีทรัพย์สินใดที่จะนำมาขายได้บ้าง", "nextQuestionId": "45007", "choice_score": "84" },
+                { "seq": "2", "desc": "นำทรัพย์สินที่มีความจำเป็นน้อยไปขายก่อน", "nextQuestionId": "45007", "choice_score": "83.5" },
+                { "seq": "2", "desc": "ทำทั้ง 2 วิธีข้างต้น", "nextQuestionId": "45007", "choice_score": "83" }
+            ],
+            "questionType": "1"
         },
 
         {
             "questionId": "45007",
-            "detail": "วันนึงที่เธอพร้อมจะเปิดใจ สิ่งดี ๆ ก็จะเข้ามาหาเธอเอง",
+            "detail": "เธอมีอะไรที่อยากจะบอกกับตัวเองในวันนี้ไหมพิมพ์สิ่งที่เธออยากบอกกับตัวเองในกล่องข้อความได้เลย แต่ถ้าไม่มีสามารถกดถัดไปได้เลยนะ",
             "nextQuestionId": "45008",
-            "questionType": "3"
+            "questionType": "2"
         },
 
         {
             "questionId": "45008",
-            "detail": "ต่อจากนี้ให้น้องหมีได้ช่วยเยียวยาจิตใจของเธอนะ",
-            "nextQuestionId": "",
-            "questionType": "3"
-        },
-
-
-
-        {
-            "questionId": "45009",
-            "detail": "เธอพอใจในความสัมพันธ์ของเธอในตอนนี้หรือไม่",
-            "choices": [
-                { "seq": "1", "desc": "พอใจ", "nextQuestionId": "45010", "choice_score": "51" },
-                { "seq": "2", "desc": "ไม่พอใจ", "nextQuestionId": "45010", "choice_score": "55" }
-            ],
-            "questionType": "1"
-        },
-
-        {
-            "questionId": "45010",
-            "detail": "อาทิตย์ที่ผ่านมาเธอทะเลาะกับแฟนบ่อยแค่ไหน",
-            "choices": [
-                { "seq": "1", "desc": "ทะเลาะกันบ่อยมาก", "nextQuestionId": "45011", "choice_score": "3" },
-                { "seq": "2", "desc": "ทะเลาะกันปานกลาง", "nextQuestionId": "45011", "choice_score": "2" },
-                { "seq": "2", "desc": "ทะเลาะค่อนข้างน้อย", "nextQuestionId": "45011", "choice_score": "1" }
-            ],
-            "questionType": "1"
-        },
-
-        {
-            "questionId": "45011",
-            "detail": "เธอได้เปิดใจพูดคุยถึงปัญหากันหรือยัง",
-            "choices": [
-                { "seq": "1", "desc": "ได้ลองเปิดใจคุยกันแล้ว", "nextQuestionId": "45012", "choice_score": "51.5" },
-                { "seq": "2", "desc": "ยังไม่เคยลองเปิดใจคุยกันเลย", "nextQuestionId": "45012", "choice_score": "55.5" }
-            ],
-            "questionType": "1"
-        },
-
-        {
-            "questionId": "45012",
-            "detail": "บอกได้ไหมว่า แฟนของเธอมีข้อดีหรือข้อเสียมากกว่ากัน",
-            "choices": [
-                { "seq": "1", "desc": "แฟนของเธอมีข้อดีมากกว่า", "nextQuestionId": "45013", "choice_score": "52" },
-                { "seq": "2", "desc": "แฟนของเธอมีข้อเสียมากกว่า", "nextQuestionId": "45013", "choice_score": "56" }
-            ],
-            "questionType": "1"
-        },
-
-        {
-            "questionId": "45013",
-            "detail": "ความรักครั้งนี้คุณยังอยากจับมือกันและพยายามต่อหรือไม่",
-            "choices": [
-                { "seq": "1", "desc": "ยังอยากพยายามต่อกับความรัก", "nextQuestionId": "45014", "choice_score": "52.5" },
-                { "seq": "2", "desc": "รู้สึกเหนื่อย ไม่อยากพยายามแล้ว", "nextQuestionId": "45014", "choice_score": "56.5" }
-            ],
-            "questionType": "1"
-        },
-
-        {
-            "questionId": "45014",
-            "detail": "เธอมีอะไรที่อยากจะบอกกับตัวเองในวันนี้ไหม พิมพ์สิ่งที่เธออยากบอกกับตัวเองในกล่องข้อความได้เลย แต่ถ้ายังไม่อยากบอกกดถัดไปได้เลยนะ",
-            "nextQuestionId": "45015",
-            "questionType": "2"
-        },
-
-        {
-            "questionId": "45015",
-            "detail": "เธออาจจะต้องใช้เวลาในการทบทวนสิ่งต่างๆที่ผ่านมานะ",
-            "nextQuestionId": "45016",
-            "questionType": "3"
-        },
-
-        {
-            "questionId": "45016",
-            "detail": "หากวันไหนที่เธอไม่สบายใจ สามารถมาคุยกับน้องหมีได้เสมอนะ",
-            "nextQuestionId": "",
-            "questionType": "3"
-        },
-
-
-        {
-            "questionId": "45017",
-            "detail": "เธออยู่ในสถานะคนคุยมานานแค่ไหน",
-            "choices": [
-                { "seq": "1", "desc": "เพิ่งเริ่มคุยได้ไม่นาน", "nextQuestionId": "45018", "choice_score": "1" },
-                { "seq": "2", "desc": "คุยมาสักพักแต่ไม่นานมาก", "nextQuestionId": "45018", "choice_score": "2" },
-                { "seq": "3", "desc": "คุยมานานมาก", "nextQuestionId": "45018", "choice_score": "3" }
-            ],
-            "questionType": "1"
-        },
-
-        {
-            "questionId": "45018",
-            "detail": "เธอกับเข้ากันได้ดีกับอีกฝ่ายมากแค่ไหน",
-            "choices": [
-                { "seq": "1", "desc": "เข้ากันได้ดีมาก", "nextQuestionId": "45019", "choice_score": "61" },
-                { "seq": "2", "desc": "เข้ากันได้บ้าง", "nextQuestionId": "45019", "choice_score": "63" },
-                { "seq": "3", "desc": "เข้ากันไม่ได้เลย", "nextQuestionId": "45019", "choice_score": "65" }
-            ],
-            "questionType": "1"
-        },
-
-        {
-            "questionId": "45019",
-            "detail": "ความสัมพันธ์ของเธอตอนนี้อีกฝ่ายมีความชัดเจนหรือไม่",
-            "choices": [
-                { "seq": "1", "desc": "ความสัมพันธ์ชัดเจน", "nextQuestionId": "45020", "choice_score": "61.5" },
-                { "seq": "2", "desc": "ความสัมพันธ์ที่ไม่ชัดเจน", "nextQuestionId": "45020", "choice_score": "65.5" }
-            ],
-            "questionType": "1"
-        },
-
-        {
-            "questionId": "45020",
-            "detail": "เธออยากคุยและพัฒนาความสัมพันธ์ต่อกับคนนี้ไหม",
-            "choices": [
-                { "seq": "1", "desc": "อยากความสัมพันธ์ต่อไป", "nextQuestionId": "45021", "choice_score": "62" },
-                { "seq": "2", "desc": "ไม่อยากความสัมพันธ์ต่อ", "nextQuestionId": "45021", "choice_score": "66" }
-            ],
-            "questionType": "1"
-        },
-
-        {
-            "questionId": "45021",
-            "detail": "เขาปฏิบัติกับเธอเป็นคนพิเศษหรือทำแบบนี้กับเหมือนคนทั่วไป",
-            "choices": [
-                { "seq": "1", "desc": "เขาปฎิบัติกับเราเหมือนคนพิเศษ", "nextQuestionId": "45022", "choice_score": "62.5" },
-                { "seq": "2", "desc": "เขาปฎิบัติกับเราเหมือนคนทั่วไป", "nextQuestionId": "45022", "choice_score": "66.5" }
-            ],
-            "questionType": "1"
-        },
-
-
-        {
-            "questionId": "45022",
-            "detail": "เธอมีอะไรที่อยากจะบอกกับตัวเองในวันนี้ไหม พิมพ์สิ่งที่เธออยากบอกกับตัวเองในกล่องข้อความได้เลย แต่ถ้ายังไม่อยากบอกกดถัดไปได้เลยนะ",
-            "nextQuestionId": "45023",
-            "questionType": "2"
-        },
-
-        {
-            "questionId": "45023",
-            "detail": "เหนื่อยมั้ย พักสักหน่อยได้นะ",
-            "nextQuestionId": "45024",
-            "questionType": "3"
-        },
-
-        {
-            "questionId": "45024",
-            "detail": "เธอเหมาะสมกับการได้รับความรัก",
-            "nextQuestionId": "",
-            "questionType": "3"
-        },
-
-
-        {
-            "questionId": "45025",
-            "detail": "เธอพอใจในความสัมพันธ์ในตอนนี้หรือไม่",
-            "choices": [
-                { "seq": "1", "desc": "พอใจ", "nextQuestionId": "45026", "choice_score": "75" },
-                { "seq": "2", "desc": "ไม่พอใจ", "nextQuestionId": "45026", "choice_score": "71" }
-            ],
-            "questionType": "1"
-        },
-
-        {
-            "questionId": "45026",
-            "detail": "เธอรู้หรือไม่ว่าคนที่คุณรักตอนนี้เขามีเจ้าของแล้ว",
-            "choices": [
-                { "seq": "1", "desc": "รู้ตั้งแต่แรก", "nextQuestionId": "45027", "choice_score": "75.5" },
-                { "seq": "2", "desc": "รู้เมื่อได้คุยมาสักพัก", "nextQuestionId": "45027", "choice_score": "71.5" }
-            ],
-            "questionType": "1"
-        },
-
-        {
-            "questionId": "45027",
-            "detail": "เธอรู้ได้อย่างไรว่าเขามีเจ้าของ",
-            "choices": [
-                { "seq": "1", "desc": "เขามาบอก", "nextQuestionId": "45028", "choice_score": "76" },
-                { "seq": "2", "desc": "รู้ด้วยตัวเอง", "nextQuestionId": "45028", "choice_score": "72" }
-            ],
-            "questionType": "1"
-        },
-
-        {
-            "questionId": "45028",
-            "detail": "เธอคิดว่าเขาจริงใจกับเธอแค่ไหน",
-            "choices": [
-                { "seq": "1", "desc": "100%", "nextQuestionId": "45029", "choice_score": "5" },
-                { "seq": "2", "desc": "75%", "nextQuestionId": "45029", "choice_score": "4" },
-                { "seq": "3", "desc": "50%", "nextQuestionId": "45029", "choice_score": "3" },
-                { "seq": "2", "desc": "25%", "nextQuestionId": "45029", "choice_score": "2" },
-                { "seq": "3", "desc": "ไม่มีความจริงใจ", "nextQuestionId": "45029", "choice_score": "1" }
-            ],
-            "questionType": "1"
-        },
-
-        {
-            "questionId": "45029",
-            "detail": "ถ้ามีโอกาสได้พัฒนาความสัมพันธ์จนเป็นแฟนกัน เธอคิดว่าเขาจะนอกใจหรือไม่",
-            "choices": [
-                { "seq": "1", "desc": "นอกใจแน่นอน", "nextQuestionId": "45030", "choice_score": "72.5" },
-                { "seq": "2", "desc": "ไม่นอกใจ เชื่อมั่นในตัวเขา", "nextQuestionId": "45030", "choice_score": "76.5" }
-            ],
-            "questionType": "1"
-        },
-
-
-        {
-            "questionId": "45030",
-            "detail": "เธอมีอะไรที่อยากจะบอกกับตัวเองในวันนี้ไหมพิมพ์สิ่งที่เธออยากบอกกับตัวเองในกล่องข้อความได้เลย แต่ถ้าไม่มีสามารถกดถัดไปได้เลยนะ",
-            "nextQuestionId": "45031",
-            "questionType": "2"
-        },
-
-        {
-            "questionId": "45031",
-            "detail": "ยังมีคนดี ๆ ที่รอให้เราไปเจออีกเยอะ",
-            "nextQuestionId": "46009",
-            "questionType": "3"
-        },
-
-        {
-            "questionId": "45032",
-            "detail": "ความรักที่ดี จะไม่ทำให้เรานั้นทุกข์ใจมากกว่ามีความสุข ",
-            "nextQuestionId": "",
-            "questionType": "3"
-        },
-
-        {
-            "questionId": "46001",
-            "detail": "ตอนนี้ปัญหาเรื่องการเงินของเธอกระทบต่อจิตใจเธอแค่ไหน",
-            "choices": [
-                { "seq": "1", "desc": "มากที่สุด", "nextQuestionId": "46002", "choice_score": "5" },
-                { "seq": "2", "desc": "มาก", "nextQuestionId": "46002", "choice_score": "4" },
-                { "seq": "3", "desc": "ปานกลาง", "nextQuestionId": "46002", "choice_score": "3" },
-                { "seq": "4", "desc": "น้อย", "nextQuestionId": "46002", "choice_score": "2" },
-                { "seq": "5", "desc": "น้อยที่สุด", "nextQuestionId": "46002", "choice_score": "1" }
-            ],
-            "questionType": "1"
-        },
-
-        {
-            "questionId": "46002",
-            "detail": "เรามาข้ามผ่านอุปสรรคนี้ไปด้วยกันนะ โดยน้องหมีอยากนำเสนอรูปแบบเหล่านี้มาให้เธอได้ลองเลือก",
-            "choices": [
-                { "seq": "1", "desc": "ลองจัดลำดับความสำคัญของหนี้กัน", "nextQuestionId": "46003", "choice_score": "85" },
-                { "seq": "2", "desc": "มาลองวางแผนการใช้เงินกัน", "nextQuestionId": "46003", "choice_score": "80" }
-            ],
-            "questionType": "1"
-        },
-
-        {
-            "questionId": "46003",
-            "detail": "ถ้าให้เธอลองวางแผนจัดระเบียบหนี้เธอพอจะนึกออกกันไหม",
-            "choices": [
-                { "seq": "1", "desc": "คิดออกๆ", "nextQuestionId": "46004", "choice_score": "80.5" },
-                { "seq": "2", "desc": "ยังไม่เข้าใจเท่าไหร่", "nextQuestionId": "46004", "choice_score": "85.5" }
-            ],
-            "questionType": "1"
-        },
-
-        {
-            "questionId": "46004",
-            "detail": "เธอมองว่ารูปแบบใดที่เธอสามารถพอที่จะทำให้หนี้ลดลงไปได้",
-            "choices": [
-                { "seq": "1", "desc": "ยืม/กู้เงินจากคนอื่นมาโปะหนี้", "nextQuestionId": "46005", "choice_score": "82" },
-                { "seq": "2", "desc": "ขายสินทรัพย์ที่ตนเองมีอยู่", "nextQuestionId": "46005", "choice_score": "81.5" },
-                { "seq": "3", "desc": "เพิ่มรายได้ด้วยงานพิเศษ", "nextQuestionId": "46005", "choice_score": "81" }
-            ],
-            "questionType": "1"
-        },
-
-        {
-            "questionId": "46005",
-            "detail": "เธอคิดว่าการยืม/กู้เงินเพื่อมาโปะหนี้",
-            "choices": [
-                { "seq": "1", "desc": "ข้อดีมากกว่า", "nextQuestionId": "46006", "choice_score": "86" },
-                { "seq": "2", "desc": "ข้อเสียมากกว่า", "nextQuestionId": "46006", "choice_score": "82.5" }
-            ],
-            "questionType": "1"
-        },
-
-        {
-            "questionId": "46006",
-            "detail": "น้องหมีอยากให้เธอทำใจให้สบาย และลองคิดว่ามีวิธีใดที่จะช่วยทำให้ตัดสินใจขายได้ง่ายขึ้น",
-            "choices": [
-                { "seq": "1", "desc": "เช็คว่ามีทรัพย์สินใดที่จะนำมาขายได้บ้าง", "nextQuestionId": "46007", "choice_score": "84" },
-                { "seq": "2", "desc": "นำทรัพย์สินที่มีความจำเป็นน้อยไปขายก่อน", "nextQuestionId": "46007", "choice_score": "83.5" },
-                { "seq": "2", "desc": "ทำทั้ง 2 วิธีข้างต้น", "nextQuestionId": "46007", "choice_score": "83" }
-            ],
-            "questionType": "1"
-        },
-
-        {
-            "questionId": "46007",
-            "detail": "เธอมีอะไรที่อยากจะบอกกับตัวเองในวันนี้ไหมพิมพ์สิ่งที่เธออยากบอกกับตัวเองในกล่องข้อความได้เลย แต่ถ้าไม่มีสามารถกดถัดไปได้เลยนะ",
-            "nextQuestionId": "46008",
-            "questionType": "2"
-        },
-
-        {
-            "questionId": "46008",
             "detail": "อาจจะใช้เวลาสักหน่อยนะ อย่าเพิ่งท้อน้าาา",
-            "nextQuestionId": "46009",
-            "questionType": "3"
-        },
-
-        {
-            "questionId": "46009",
-            "detail": "น้องหมีเชื่อมั่นในตัวเธอเสมอ ",
             "nextQuestionId": "",
             "questionType": "3"
         }
-
         ]
 
 
