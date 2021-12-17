@@ -6,7 +6,7 @@ to_do_list.list_all = async (json) => {
     const ret = {}
 
 
-    let sql = " select t.to_do_list_id, t.title, t.description, to_char(t.finish_date,'DD-MM-YYYY') as finish_date, t.user_id, p.priority_id "
+    let sql = " select t.to_do_list_id, t.title, t.description, to_char(t.finish_date,'DD-MM-YYYY') as finish_date, t.user_id, p.priority_id, p.priority_name "
     sql += " from to_do_list t left join priority p "
     sql += " on t.priority_id = p.priority_id "
     sql += " left join users u "
@@ -126,7 +126,7 @@ to_do_list.get_one_to_do_list = async (json) => {
     const ret = {}
 
 
-    let sql = " select t.to_do_list_id, t.title, t.description, to_char(t.finish_date,'DD-MM-YYYY') as finish_date,  p.priority_id "
+    let sql = " select t.to_do_list_id, t.title, t.description, to_char(t.finish_date,'DD-MM-YYYY') as finish_date,  p.priority_id, p.priority_name "
     sql += " from to_do_list t left join priority p "
     sql += " on t.priority_id = p.priority_id "
     sql += " left join users u "
