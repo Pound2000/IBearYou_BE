@@ -108,7 +108,7 @@ diary.list_allgood = async(json)=>{
     SELECT d.good, d.update_date FROM diary d LEFT JOIN users u ON d.user_id = u.user_id where 1=1
     */
     
-    let sql   =  " select  to_char(d.create_date, 'YYYY-MM-DD') as date, d.good"
+    let sql   =  " select  to_char(d.create_date, 'DD-MM-YYYY') as date, d.good"
         sql  +=  " from diary d " 
         sql  +=  " left join users u on d.user_id = u.user_id where u.user_id =" +json.user_id; 
         sql  +=  " group by d.good,d.create_date"
@@ -144,7 +144,7 @@ diary.list_allbad = async(json)=>{
     SELECT d.bad, d.update_date FROM diary d LEFT JOIN users u ON d.user_id = u.user_id where 1=1
     */
     // แก้ syntax ไม่เอา hard code
-    let sql   =  " select  to_char(d.create_date, 'YYYY-MM-DD') as date, d.bad"
+    let sql   =  " select  to_char(d.create_date, 'DD-MM-YYYY') as date, d.bad"
         sql  +=  " from diary d " 
         sql  +=  "left join users u on d.user_id = u.user_id where u.user_id =" +json.user_id; 
         sql  +=  " group by d.bad,d.create_date"
@@ -179,7 +179,7 @@ diary.list_allbad = async(json)=>{
         SELECT d.wish, d.update_date FROM diary d LEFT JOIN users u ON d.user_id = u.user_id where 1=1
         */
         
-        let sql   =  " select  to_char(d.create_date, 'YYYY-MM-DD') as date, d.wish"
+        let sql   =  " select  to_char(d.create_date, 'DD-MM-YYYY') as date, d.wish"
             sql  +=  " from diary d " 
             sql  +=  "left join users u on d.user_id = u.user_id where u.user_id =" +json.user_id; 
             sql  +=  " group by d.wish,d.create_date"
@@ -220,7 +220,7 @@ diary.select_diary = async(json)=>{
     where u.user_id = '1' and d.create_date = '2021-11-16';
     */
     
-    let sql  =  " select d.diary_id, to_char(d.create_date, 'YYYY-MM-DD') as date, d.title, d.good, d.bad, d.wish, d.feel_id, f.feel_name  "
+    let sql  =  " select d.diary_id, to_char(d.create_date, 'DD-MM-YYYY') as date, d.title, d.good, d.bad, d.wish, d.feel_id, f.feel_name  "
         sql +=  " from diary d left join feel f "
         sql +=  " on d.feel_id = f.feel_id "
         sql +=  " left join users u "
