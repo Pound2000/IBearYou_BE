@@ -220,8 +220,14 @@ diary.select_diary = async(json)=>{
     where u.user_id = '1' and d.create_date = '2021-11-16';
     */
     
+<<<<<<< HEAD
     let sql  =  " select d.diary_id, to_char(d.create_date, 'DD-MM-YYYY') as create_date, d.title, d.good, d.bad, d.wish, d.feel_id "
         sql +=  " from diary d "
+=======
+    let sql  =  " select d.diary_id, to_char(d.create_date, 'DD-MM-YYYY') as date, d.title, d.good, d.bad, d.wish, d.feel_id, f.feel_name  "
+        sql +=  " from diary d left join feel f "
+        sql +=  " on d.feel_id = f.feel_id "
+>>>>>>> main
         sql +=  " left join users u "
         sql +=  " on d.user_id = u.user_id" 
         sql +=  " where u.user_id = '"+json.user_id+"'"; 

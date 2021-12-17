@@ -6,7 +6,7 @@ to_do_list.list_all = async (json) => {
     const ret = {}
 
 
-    let sql = " select t.to_do_list_id, t.title, t.description, to_char(t.finish_date,'DD-MM-YYYY') as finish_date, t.user_id, p.priority_id "
+    let sql = " select t.to_do_list_id, t.title, t.description, to_char(t.finish_date,'DD-MM-YYYY') as finish_date, t.user_id, p.priority_id, p.priority_name "
     sql += " from to_do_list t left join priority p "
     sql += " on t.priority_id = p.priority_id "
     sql += " left join users u "
@@ -120,6 +120,41 @@ const ret ={}
 
         
         return ret;
+}
+
+to_do_list.get_one_to_do_list = async (json) => {
+    const ret = {}
+
+
+    let sql = " select t.to_do_list_id, t.title, t.description, to_char(t.finish_date,'DD-MM-YYYY') as finish_date,  p.priority_id, p.priority_name "
+    sql += " from to_do_list t left join priority p "
+    sql += " on t.priority_id = p.priority_id "
+    sql += " left join users u "
+    sql += " on t.user_id = u.user_id where u.user_id = '" + json.user_id + "'";
+    sql += " and t.to_do_list_id = '" +json.to_do_list_id+ "'";
+
+    console.log(sql)
+    await psql.manyOrNone(sql)
+        .then((data) => {
+
+
+            console.log(data.length)
+            if (data.length > 0) {
+                ret.status = 200
+                ret.message = "Success"
+                ret.data = data
+
+            }
+
+        })
+        .catch(error => {
+            // error;
+            ret.status = 400
+            ret.message = "Error"
+            throw error
+        });
+    return ret
+
 }
 export default to_do_list
 

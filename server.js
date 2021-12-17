@@ -342,6 +342,16 @@ app.get('/api/list-to_do_list',async (req,res,next)=>{
 
 })
 
+// get one to-do list
+app.get('/api/get-one_to_do_list',async (req,res,next)=>{
+   const json = req.query
+   console.log("json : ",json)
+   const ret = await to_do_list.get_one_to_do_list(json)
+   console.log(ret)
+   res.send(ret)
+
+})
+
 //write to_do_list
 app.post('/api/create-to_do_list',async (req,res,next)=>{
    const json = req.body
