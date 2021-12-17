@@ -62,17 +62,25 @@ await psql.manyOrNone(sql)
 
 card.card_result_real = async(json)=>{
     const ret ={}
-    let x = "select CAST(final_score as numeric) from result where result_id = '" +json.result_id+ "'"
-    console.log(x);
-    if(27.1 <= x && x <= 29.3) {
+    const x = await psql.query("select CAST(final_score as numeric) from result where result_id = '" +json.result_id+ "'", function(err,Result){
+      
+        return parseFloat(x);
+
+    });
+
+    
+    console.log(x);   
+    var obj = JSON.parse(x);  
+    if(27.1 <= obj && obj <= 29.3) {
         var sql = "select card_id, card_name, card_description, cheer_up, image_result from card where card_id = '8'";
-    } else if(29.4 <= x && x <= 31.6){
+    } else if(29.4 <= obj && obj <= 31.6){
         var sql = "select card_id, card_name, card_description, cheer_up, image_result from card where card_id = '9'";
-    } else if(42.4 <= x && x <= 44.2){
-        var sql = "select card_id, card_name, card_description, cheer_up, image_result from card where card_id = '9'";
-    } else {
+    } else if(42.4 <= obj && obj <= 44.2){
         var sql = "select card_id, card_name, card_description, cheer_up, image_result from card where card_id = '10'";
+    } else {
+        var sql = "error";
     }
+
 
     //console.log(sql);
     await psql.manyOrNone(sql)
