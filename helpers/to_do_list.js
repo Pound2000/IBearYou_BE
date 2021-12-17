@@ -1,54 +1,56 @@
-const psql = require('../psqlAdapter').psql;
+const psql = require('../psqlAdapter').psql;  
 
-const to_do_list = {}
+const diary ={}
 
-to_do_list.list_all = async (json) => {
-    const ret = {}
+diary.list_all = async(json)=>{
+const ret ={}
+/*
+SELECT diary_id, diary_date, title, good, bad, wish, create_date, update_date, 
+diary_pic, user_id, feel_id FROM  diary
+*/
 
+let sql  =  " SELECT D.diary_id, D.title, D.good, D.bad, D.wish, D.create_date " 
+sql += ", D.user_id, F.feel_name "
+sql += " FROM  diary D LEFT JOIN Feel F ON D.feel_id = F.feel_id" 
+sql += " LEFT JOIN users U ON D.user_id = U.user_id WHERE u.user_id = " +json.user_id;
+//sql += " AND d.diary_id = "+json.diary_id + " " 
+    
+await psql.manyOrNone(sql)
+                .then((data) => {
+                 
 
-    let sql = " select t.to_do_list_id, t.title, t.description, to_char(t.finish_date,'DD-MM-YYYY') as finish_date, t.user_id, p.priority_id, p.priority_name "
-    sql += " from to_do_list t left join priority p "
-    sql += " on t.priority_id = p.priority_id "
-    sql += " left join users u "
-    sql += " on t.user_id = u.user_id where u.user_id = '" + json.user_id + "'"
-    sql += " order by priority_id DESC; "
-
-    console.log(sql)
-    await psql.manyOrNone(sql)
-        .then((data) => {
-
-
-            console.log(data.length)
-            if (data.length > 0) {
-                ret.status = 200
-                ret.message = "Success"
+                console.log(data.length)
+                if(data.length > 0){ 
+                ret.status=200
+                ret.message="Success"
                 ret.data = data
 
-            }
+                }
 
-        })
-        .catch(error => {
-            // error;
-            ret.status = 400
-            ret.message = "Error"
-            throw error
-        });
-    return ret
+                })
+                .catch(error => {
+                // error;
+                ret.status =400
+                ret.message="Error"
+                throw error  
+                });
+                return ret
 
 }
 
-to_do_list.create_to_do_list= async(json)=>{
+//post
+diary.create_diary= async(json)=>{
     console.log(json)
 const ret ={}
 
-let sql = "INSERT INTO to_do_list(title, description, finish_date, create_date, update_date, user_id, priority_id)"
+let sql = "INSERT INTO diary(title, good, bad, wish, create_date, user_id, feel_id)"
     sql += " VALUES ( '"+json.title;
-    sql += "','"+json.description;
-    sql += "','"+json.finish_date;
+    sql += "','"+json.good;
+    sql += "','"+json.bad;
+    sql += "','"+json.wish;
     sql += "', current_timestamp";
-    sql += ", current_timestamp";
     sql += ",'"+json.user_id;
-    sql += "','"+json.priority_id+"')";
+    sql += "','"+json.feel_id+"')";
     console.log(" sql : ",sql)
         const insert = await psql.none(sql)
                 .then(() => { 
@@ -65,20 +67,19 @@ let sql = "INSERT INTO to_do_list(title, description, finish_date, create_date, 
         return ret;
 }
 
-
-to_do_list.edit_to_do_list = async(json)=>{
+//put
+diary.edit_diary = async(json)=>{
     console.log(json)
 const ret ={}
 
 
-    let sql  = "UPDATE to_do_list SET title='"+json.title+"'";
-        sql += ", description ='" +json.description+"'";
-        sql += ", finish_date='"+json.finish_date+ "'";
-        sql += ", update_date= current_timestamp";
-	    sql += ", user_id = '" +json.user_id+"'" ;
-        sql += ", priority_id = '" +json.priority_id+"'";
-	    sql += " WHERE to_do_list_id ='" +json.to_do_list_id+"'";
-
+    let sql  = "UPDATE diary SET title='"+json.title+"'";
+        sql += ", good='" +json.good+"'";
+        sql += ", bad='"+json.bad+ "'";
+        sql += ", wish='"+json.wish+ "'";
+     sql += ", user_id = '" +json.user_id+"'" ;
+     sql += " WHERE diary_id ='" +json.diary_id+"'";
+        sql += " and date(create_date) = '" +json.create_date+"'";
 
     console.log(" sql : ",sql)
 
@@ -96,66 +97,159 @@ const ret ={}
         return ret;
 }
 
-to_do_list.delete_to_do_list = async(json)=>{
+
+//Home page
+
+//Get good only
+diary.list_allgood = async(json)=>{
+    const ret ={}
     console.log(json)
-const ret ={}
-
-
-    let sql  = "DELETE FROM to_do_list where to_do_list_id ='"+json.to_do_list_id+"'";
-        sql += "and user_id ='" +json.user_id+"'";
-
-
-
-    console.log(" sql : ",sql)
-
-        const remove = await psql.none(sql)
-                .then(() => { 
-                    ret.status="Success" 
-                })
-                .catch(error => {
-                    // error;
-                    throw error
-                    ret.status="Error"
-                });
-
-        
-        return ret;
-}
-
-to_do_list.get_one_to_do_list = async (json) => {
-    const ret = {}
-
-
-    let sql = " select t.to_do_list_id, t.title, t.description, to_char(t.finish_date,'DD-MM-YYYY') as finish_date,  p.priority_id, p.priority_name "
-    sql += " from to_do_list t left join priority p "
-    sql += " on t.priority_id = p.priority_id "
-    sql += " left join users u "
-    sql += " on t.user_id = u.user_id where u.user_id = '" + json.user_id + "'";
-    sql += " and t.to_do_list_id = '" +json.to_do_list_id+ "'";
-
-    console.log(sql)
+    /*
+    SELECT d.good, d.update_date FROM diary d LEFT JOIN users u ON d.user_id = u.user_id where 1=1
+    */
+    
+    let sql   =  " select  to_char(d.create_date, 'DD-MM-YYYY') as date, d.good"
+        sql  +=  " from diary d " 
+        sql  +=  " left join users u on d.user_id = u.user_id where u.user_id =" +json.user_id; 
+        sql  +=  " group by d.good,d.create_date"
+        sql  +=  " order by d.create_date desc;" 
+    console.log(sql)   
     await psql.manyOrNone(sql)
-        .then((data) => {
+                    .then((data) => {
+                     
+    
+                    console.log(data.length)
+                    if(data.length >0){ 
+                    ret.status=200
+                    ret.message="Success"
+                    ret.data = data
+    
+                    }
+    
+                    })
+                    .catch(error => {
+                    // error;
+                    ret.status =400
+                    ret.message="Error"
+                    throw error  
+                    });
+                    return ret
+    
+    }
+
+//Get bad only
+diary.list_allbad = async(json)=>{
+    const ret ={}
+    /*
+    SELECT d.bad, d.update_date FROM diary d LEFT JOIN users u ON d.user_id = u.user_id where 1=1
+    */
+    // แก้ syntax ไม่เอา hard code
+    let sql   =  " select  to_char(d.create_date, 'DD-MM-YYYY') as date, d.bad"
+        sql  +=  " from diary d " 
+        sql  +=  "left join users u on d.user_id = u.user_id where u.user_id =" +json.user_id; 
+        sql  +=  " group by d.bad,d.create_date"
+        sql  +=  " order by d.create_date desc;" 
+        
+    await psql.manyOrNone(sql)
+                    .then((data) => {
+                     
+    
+                    console.log(data.length)
+                    if(data.length >0){ 
+                    ret.status=200
+                    ret.message="Success"
+                    ret.data = data
+    
+                    }
+    
+                    })
+                    .catch(error => {
+                    // error;
+                    ret.status =400
+                    ret.message="Error"
+                    throw error  
+                    });
+                    return ret
+    
+    }
+
+    diary.list_allwish = async(json)=>{
+        const ret ={}
+        /*
+        SELECT d.wish, d.update_date FROM diary d LEFT JOIN users u ON d.user_id = u.user_id where 1=1
+        */
+        
+        let sql   =  " select  to_char(d.create_date, 'DD-MM-YYYY') as date, d.wish"
+            sql  +=  " from diary d " 
+            sql  +=  "left join users u on d.user_id = u.user_id where u.user_id =" +json.user_id; 
+            sql  +=  " group by d.wish,d.create_date"
+            sql  +=  " order by d.create_date desc;" 
+            
+        await psql.manyOrNone(sql)
+                        .then((data) => {
+                         
+        
+                        console.log(data.length)
+                        if(data.length >0){ 
+                        ret.status=200
+                        ret.message="Success"
+                        ret.data = data
+        
+                        }
+        
+                        })
+                        .catch(error => {
+                        // error;
+                        ret.status =400
+                        ret.message="Error"
+                        throw error  
+                        });
+                        return ret
+        
+        }
 
 
-            console.log(data.length)
-            if (data.length > 0) {
-                ret.status = 200
-                ret.message = "Success"
-                ret.data = data
+//select diary
+diary.select_diary = async(json)=>{
+    const ret ={}
+    /*
+    select d.create_date, d.title, d.good, d.bad, d.wish
+    from diary d
+    left join users u
+    on d.user_id = u.user_id 
+    where u.user_id = '1' and d.create_date = '2021-11-16';
+    */
+    
+    let sql  =  " select d.diary_id, to_char(d.create_date, 'DD-MM-YYYY') as date, d.title, d.good, d.bad, d.wish, d.feel_id, f.feel_name  "
+        sql +=  " from diary d left join feel f "
+        sql +=  " on d.feel_id = f.feel_id "
+        sql +=  " left join users u "
+        sql +=  " on d.user_id = u.user_id" 
+        sql +=  " where u.user_id = '"+json.user_id+"'"; 
+        sql +=  " and date(d.create_date) = '" +json.create_date+"'";
 
-            }
 
-        })
-        .catch(error => {
-            // errorr;
-            ret.status = 400
-            ret.message = "Error"
-            throw error
-        });
-    return ret
+    await psql.manyOrNone(sql)
+                    .then((data) => {
+                     
+    
+                    console.log(data.length)
+                    if(data.length >0){ 
+                    ret.status=200
+                    ret.message="Success"
+                    ret.data = data
+    
+                    }
+    
+                    })
+                    .catch(error => {
+                    // error;
+                    ret.status =400
+                    ret.message="Error"
+                    throw error  
+                    });
+                    return ret
+    
+    }
 
-}
-export default to_do_list
-
-
+export default diary
