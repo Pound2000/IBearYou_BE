@@ -6,7 +6,7 @@ to_do_list.list_all = async (json) => {
     const ret = {}
 
 
-    let sql = " select t.to_do_list_id, t.title, t.description, to_char(t.finish_date,'DD-MM-YYYY') as finish_date, t.user_id, p.priority_id, p.priority_name "
+    let sql = " select t.to_do_list_id, t.title, t.description, t.finish_date, t.user_id, p.priority_id, p.priority_name "
     sql += " from to_do_list t left join priority p "
     sql += " on t.priority_id = p.priority_id "
     sql += " left join users u "
@@ -75,21 +75,21 @@ const ret ={}
         sql += ", description ='" +json.description+"'";
         sql += ", finish_date='"+json.finish_date+ "'";
         sql += ", update_date= current_timestamp";
-     sql += ", user_id = '" +json.user_id+"'" ;
+        sql += ", user_id = '" +json.user_id+"'" ;
         sql += ", priority_id = '" +json.priority_id+"'";
-     sql += " WHERE to_do_list_id ='" +json.to_do_list_id+"'";
+        sql += " WHERE to_do_list_id ='" +json.to_do_list_id+"'";
 
 
-    console.log(" sql : ",sql)
+     console.log(" sql : ",sql)
 
         const update = await psql.none(sql)
                 .then(() => { 
-                    ret.status="Success" 
+                    ret.message="Success"  
                 })
                 .catch(error => {
                     // error;
                     throw error
-                    ret.status="Error"
+                    ret.message="Error"
                 });
 
         
@@ -100,7 +100,6 @@ to_do_list.delete_to_do_list = async(json)=>{
     console.log(json)
 const ret ={}
 
-
     let sql  = "DELETE FROM to_do_list where to_do_list_id ='"+json.to_do_list_id+"'";
         sql += "and user_id ='" +json.user_id+"'";
 
@@ -110,12 +109,13 @@ const ret ={}
 
         const remove = await psql.none(sql)
                 .then(() => { 
-                    ret.status="Success" 
+                        ret.status=200
+                        ret.message="Success"
                 })
                 .catch(error => {
                     // error;
-                    throw error
-                    ret.status="Error"
+                        ret.status=400
+                        ret.message="Error"
                 });
 
         
@@ -126,7 +126,7 @@ to_do_list.get_one_to_do_list = async (json) => {
     const ret = {}
 
 
-    let sql = " select t.to_do_list_id, t.title, t.description, to_char(t.finish_date,'DD-MM-YYYY') as finish_date,  p.priority_id, p.priority_name "
+    let sql = " select t.to_do_list_id, t.title, t.description, t.finish_date,  p.priority_id, p.priority_name "
     sql += " from to_do_list t left join priority p "
     sql += " on t.priority_id = p.priority_id "
     sql += " left join users u "
@@ -135,25 +135,26 @@ to_do_list.get_one_to_do_list = async (json) => {
 
     console.log(sql)
     await psql.manyOrNone(sql)
-        .then((data) => {
-
-
-            console.log(data.length)
-            if (data.length > 0) {
-                ret.status = 200
-                ret.message = "Success"
-                ret.data = data
-
-            }
-
-        })
-        .catch(error => {
-            // errorr;
-            ret.status = 400
-            ret.message = "Error"
-            throw error
-        });
-    return ret
-
-}
+                    .then((data) => {
+                     
+    
+                    console.log(data.length)
+                    if(data.length >0){ 
+                    ret.status=200
+                    ret.message="Success"
+                    ret.data = data[0]
+    
+                    }
+    
+                    })
+                    .catch(error => {
+                    // error;
+                    ret.status =400
+                    ret.message="Error"
+                    throw error  
+                    });
+                    return ret
+    
+    }
+    
 export default to_do_list

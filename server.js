@@ -369,7 +369,7 @@ app.put('/api/edit-to_do_list',async (req,res,next)=>{
 })
 
 //remove to_do_list
-app.delete('/api/delete-to_do_list',async (req,res,next)=>{
+app.put('/api/delete-to_do_list',async (req,res,next)=>{
    const json = req.body
    const ret = await to_do_list.delete_to_do_list(json)
    console.log(ret)
