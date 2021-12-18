@@ -79,7 +79,7 @@ const ret ={}
         sql += ", wish='"+json.wish+ "'";
      sql += ", user_id = '" +json.user_id+"'" ;
      sql += " WHERE diary_id ='" +json.diary_id+"'";
-        sql += " and date(create_date) = '" +json.create_date+"'";
+        
 
     console.log(" sql : ",sql)
 
