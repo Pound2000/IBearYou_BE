@@ -63,7 +63,7 @@ await psql.manyOrNone(sql)
 
 card.card_result_real = async(json)=>{
     const ret ={}
-    const x = await psql.query("select final_score from result where result_id = '" +json.result_id+ "'", function(err,Result){
+    const x = await psql.query("select final_score from result where result_id = '" +json.result_id+ "' and user_id = '" +json.user_id+ "'", function(err,Result){
 
         return parseFloat(Result);
 
