@@ -62,4 +62,31 @@ let sql = "INSERT INTO result(user_prompt, create_date, final_score, questionnai
         return ret;
 }
 
+//put
+result.edit_card_id = async(json)=>{
+    console.log(json)
+const ret ={}
+
+
+    let sql  = " UPDATE result SET card_id = '" +json.card_id+"'";
+	    sql += " WHERE result_id = '"+json.result_id+"'";
+        sql += " and user_id = '"+json.user_id+"'";
+        
+
+    console.log(" sql : ",sql)
+
+        const update = await psql.none(sql)
+                .then(() => { 
+                    ret.message="Success"  
+                })
+                .catch(error => {
+                    // error;
+                    throw error
+                    ret.message="Error"
+                });
+
+        
+        return ret;
+}
+
 export default result

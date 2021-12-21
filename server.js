@@ -157,6 +157,14 @@ app.post('/api/result',async (req,res,next)=>{
    res.send(ret)
 })
 
+app.put('/api/edit-card_id',async (req,res,next)=>{
+   const json = req.body
+   const ret = await result.edit_card_id(json)
+   console.log(ret)
+   res.send(ret)
+})
+
+
 // card
 app.get('/api/list-card',async (req,res,next)=>{
    const json = req.query
