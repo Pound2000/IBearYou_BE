@@ -5,7 +5,8 @@ const card ={}
 //get
 card.list_all = async(json)=>{
 const ret ={}
-let sql = "SELECT card_id, card_name, card_description, cheer_up, image_result, min_card_score, max_card_score FROM card"
+let sql = " SELECT card_id, card_name, card_description, cheer_up, image_result, min_card_score, max_card_score FROM card "
+    sql += " order by card_id asc; "
 
 await psql.manyOrNone(sql)
                 .then((data) => {
