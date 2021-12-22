@@ -40,10 +40,11 @@ result.result= async(json)=>{
     console.log(json)
 const ret ={}
 
-let sql = "INSERT INTO result( create_date, final_score, user_id)"
+let sql = "INSERT INTO result( create_date, final_score, user_id, card_id)"
 	sql += " VALUES( current_timestamp "
     sql += ",'"+json.final_score;
-    sql += "','"+json.user_id+"')";
+    sql += "','"+json.user_id;
+    sql += "','"+json.card_id+"')";
 
     console.log(" sql : ",sql)
         const insert = await psql.none(sql)
