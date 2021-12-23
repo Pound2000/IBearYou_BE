@@ -8,7 +8,7 @@ const ret ={}
 let sql = " SELECT r.result_id, to_char(r.create_date, 'DD-MM-YYYY') as date, r.final_score,  u.user_id, c.card_id, c.card_name "
     sql += " FROM result r  " 
     sql += " LEFT JOIN users u ON r.user_id = u.user_id "
-    sql += " LEFT JOIN card c ON r.card_id = c.card_id "
+    sql += " LEFT JOIN card c ON r.card_id = c.card_id where u.user_id = '" +json.user_id+ "'";
     sql += " order by r.result_id; " 
 	
 await psql.manyOrNone(sql)
