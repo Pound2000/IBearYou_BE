@@ -147,7 +147,7 @@ app.get('/api/list-question_type',async (req,res,next)=>{
 app.get('/api/list-result',async (req,res,next)=>{
    const json = req.query
    console.log("json : ",json)
-   const ret = await result.list_all(json)
+   const ret = await result.list_result(json)
    console.log(ret)
    res.send(ret)
 })

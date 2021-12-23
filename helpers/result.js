@@ -5,8 +5,8 @@ const result ={}
 result.list_result = async(json)=>{
 const ret ={}
 
-let sql = " SELECT r.result_id, r.user_prompt, r.create_date, r.final_score, qn.questionnaire_id, u.user_id, c.card_id "
-    sql += " FROM result r LEFT JOIN questionnaires qn ON r.questionnaire_id = qn.questionnaire_id " 
+let sql = " SELECT r.result_id, to_char(r.create_date, 'DD-MM-YYYY') as date, r.final_score,  u.user_id, c.card_id, c.card_name "
+    sql += " FROM result r  " 
     sql += " LEFT JOIN users u ON r.user_id = u.user_id "
     sql += " LEFT JOIN card c ON r.card_id = c.card_id "
     sql += " order by r.result_id; " 
