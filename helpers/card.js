@@ -62,6 +62,7 @@ await psql.manyOrNone(sql)
 
 }
 
+// get card
 card.card_result_real = async(json)=>{
     const ret ={}
     const x = await psql.query("select final_score from result where result_id = '" +json.result_id+ "' and user_id = '" +json.user_id+ "'", function(err,Result){
@@ -176,7 +177,7 @@ card.card_result_real = async(json)=>{
                     if(data.length >0){ 
                     ret.status=200
                     ret.message="Success"
-                    ret.data = data
+                    ret.data = data[0]
     
     
                     }
@@ -198,29 +199,29 @@ card.get_one_card = async(json)=>{
     let sql = " SELECT card_id, card_name, card_description, cheer_up, image_result FROM card "
         sql += " where card_id = '" +json.card_id+ "'";
     
-    await psql.manyOrNone(sql)
-                    .then((data) => {
-                     
-    
-                    console.log(data.length)
-                    if(data.length >0){ 
-                    ret.status=200
-                    ret.message="Success"
-                    ret.data = data
-    
-    
-                    }
-    
-                    })
-                    .catch(error => {
-                    // error;
-                    ret.status =400
-                    ret.message="Error"
-                    throw error  
-                    });
-                    return ret
-    
-    }
+ await psql.manyOrNone(sql)
+                .then((data) => {
+                 
+
+                console.log(data.length)
+                if(data.length >0){ 
+                ret.status=200
+                ret.message="Success"
+                ret.data = data
+
+
+                }
+
+                })
+                .catch(error => {
+                // error;
+                ret.status =400
+                ret.message="Error"
+                throw error  
+                });
+                return ret
+
+}
 
 
 export default card

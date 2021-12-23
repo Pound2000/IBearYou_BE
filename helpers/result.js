@@ -47,19 +47,21 @@ let sql = "INSERT INTO result( create_date, final_score, user_id, card_id)"
     sql += "','"+json.card_id+"')";
 
     console.log(" sql : ",sql)
-        const insert = await psql.none(sql)
+       const insert = await psql.none(sql)
                 .then(() => { 
-                    ret.status="Success" 
+                        ret.status=200
+                        ret.message="Success"
                 })
                 .catch(error => {
                     // error;
-                    throw error
-                    ret.status="Error"
+                        ret.status=400
+                        ret.message="Error"
                 });
 
         
         return ret;
 }
+
 
 //put
 result.edit_card_id = async(json)=>{

@@ -141,7 +141,9 @@ app.get('/api/list-question_type',async (req,res,next)=>{
    res.send(ret)
 })
 
-// result
+//-----result fn------
+
+//resutl history
 app.get('/api/list-result',async (req,res,next)=>{
    const json = req.query
    console.log("json : ",json)
