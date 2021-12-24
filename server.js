@@ -184,6 +184,14 @@ app.get('/api/get-one-card',async (req,res,next)=>{
    res.send(ret)
 })
 
+app.get('/api/select-one-card',async (req,res,next)=>{
+   const json = req.query
+   console.log("json : ",json)
+   const ret = await card.select_one_card(json)
+   console.log(ret)
+   res.send(ret)
+})
+
 app.get('/api/card-result',async (req,res,next)=>{
    const json = req.query
    console.log("json : ",json)
