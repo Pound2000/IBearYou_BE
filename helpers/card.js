@@ -236,7 +236,7 @@ card.select_one_card = async(json)=>{
                 if(data.length >0){ 
                 ret.status=200
                 ret.message="Success"
-                ret.data = data
+                ret.data = data[0]
 
 
                 }
